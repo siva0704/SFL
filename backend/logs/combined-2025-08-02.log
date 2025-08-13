@@ -1,0 +1,30 @@
+{"code":"ENOTFOUND","hostname":"_mongodb._tcp.sudeep01.jmldw.mongodb.net","level":"\u001b[31merror\u001b[39m","message":"\u001b[31mError connecting to MongoDB: querySrv ENOTFOUND _mongodb._tcp.sudeep01.jmldw.mongodb.net\u001b[39m","stack":"Error: querySrv ENOTFOUND _mongodb._tcp.sudeep01.jmldw.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:293:17)","syscall":"querySrv","timestamp":"2025-08-02 13:41:31:4131"}
+{"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32m📦 MongoDB Connected: sudeep01-shard-00-02.jm1dw.mongodb.net\u001b[39m","timestamp":"2025-08-02 13:47:47:4747"}
+{"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32m📦 MongoDB Connected: sudeep01-shard-00-00.jm1dw.mongodb.net\u001b[39m","timestamp":"2025-08-02 13:50:36:5036"}
+{"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32m🚀 Server running on port 5001\u001b[39m","timestamp":"2025-08-02 13:50:36:5036"}
+{"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32m📚 API Documentation: http://localhost:5001/api-docs\u001b[39m","timestamp":"2025-08-02 13:50:36:5036"}
+{"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32m🏥 Health Check: http://localhost:5001/health\u001b[39m","timestamp":"2025-08-02 13:50:36:5036"}
+{"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32m📦 MongoDB Connected: sudeep01-shard-00-02.jm1dw.mongodb.net\u001b[39m","timestamp":"2025-08-02 13:50:36:5036"}
+{"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32m📦 MongoDB Connected: sudeep01-shard-00-01.jm1dw.mongodb.net\u001b[39m","timestamp":"2025-08-02 14:05:47:547"}
+{"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32m📦 MongoDB Connected: sudeep01-shard-00-00.jm1dw.mongodb.net\u001b[39m","timestamp":"2025-08-02 14:06:06:66"}
+{"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32m📦 MongoDB Connected: sudeep01-shard-00-00.jm1dw.mongodb.net\u001b[39m","timestamp":"2025-08-02 14:06:20:620"}
+{"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32m📦 MongoDB Connected: sudeep01-shard-00-02.jm1dw.mongodb.net\u001b[39m","timestamp":"2025-08-02 14:06:20:620"}
+{"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32m🚀 Server running on port 5002\u001b[39m","timestamp":"2025-08-02 14:06:20:620"}
+{"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32m📚 API Documentation: http://localhost:5002/api-docs\u001b[39m","timestamp":"2025-08-02 14:06:20:620"}
+{"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32m🏥 Health Check: http://localhost:5002/health\u001b[39m","timestamp":"2025-08-02 14:06:20:620"}
+{"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32m📦 MongoDB Connected: sudeep01-shard-00-02.jm1dw.mongodb.net\u001b[39m","timestamp":"2025-08-02 14:06:29:629"}
+{"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32m🚀 Server running on port 5003\u001b[39m","timestamp":"2025-08-02 14:06:29:629"}
+{"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32m📚 API Documentation: http://localhost:5003/api-docs\u001b[39m","timestamp":"2025-08-02 14:06:29:629"}
+{"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32m🏥 Health Check: http://localhost:5003/health\u001b[39m","timestamp":"2025-08-02 14:06:29:629"}
+{"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32m📦 MongoDB Connected: sudeep01-shard-00-00.jm1dw.mongodb.net\u001b[39m","timestamp":"2025-08-02 14:06:29:629"}
+{"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32m📦 MongoDB Connected: sudeep01-shard-00-00.jm1dw.mongodb.net\u001b[39m","timestamp":"2025-08-02 14:06:40:640"}
+{"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32m📦 MongoDB Connected: sudeep01-shard-00-00.jm1dw.mongodb.net\u001b[39m","timestamp":"2025-08-02 14:06:40:640"}
+{"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32m📦 MongoDB Connected: sudeep01-shard-00-02.jm1dw.mongodb.net\u001b[39m","timestamp":"2025-08-02 14:10:05:105"}
+{"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32m🚀 Server running on port 8000\u001b[39m","timestamp":"2025-08-02 14:10:05:105"}
+{"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32m📚 API Documentation: http://localhost:8000/api-docs\u001b[39m","timestamp":"2025-08-02 14:10:05:105"}
+{"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32m🏥 Health Check: http://localhost:8000/health\u001b[39m","timestamp":"2025-08-02 14:10:05:105"}
+{"level":"\u001b[33mwarn\u001b[39m","message":"\u001b[33mMongoDB disconnected\u001b[39m","timestamp":"2025-08-02 14:12:26:1226"}
+{"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32m📦 MongoDB Connected: sudeep01-shard-00-00.jm1dw.mongodb.net\u001b[39m","timestamp":"2025-08-02 14:15:33:1533"}
+{"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32m🚀 Server running on port 8000\u001b[39m","timestamp":"2025-08-02 14:15:33:1533"}
+{"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32m📚 API Documentation: http://localhost:8000/api-docs\u001b[39m","timestamp":"2025-08-02 14:15:33:1533"}
+{"level":"\u001b[32minfo\u001b[39m","message":"\u001b[32m🏥 Health Check: http://localhost:8000/health\u001b[39m","timestamp":"2025-08-02 14:15:33:1533"}
