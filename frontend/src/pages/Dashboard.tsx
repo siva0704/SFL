@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import {
   Box,
   Typography,
@@ -34,19 +35,10 @@ import {
   Error,
 } from '@mui/icons-material';
 import { useAppSelector } from '../hooks/redux';
+import ProductionDashboard from './production/ProductionDashboard';
+import ProductionStages from './production/ProductionStages';
 
-interface DashboardCard {
-  id: string;
-  title: string;
-  value: string;
-  subtitle: string;
-  icon: React.ReactNode;
-  color: string;
-  progress?: number;
-  status?: 'success' | 'warning' | 'error';
-}
-
-const Dashboard: React.FC = () => {
+const MainDashboard: React.FC = () => {
   const { user } = useAppSelector((state) => state.auth);
   const [animate, setAnimate] = useState(false);
 
@@ -54,7 +46,7 @@ const Dashboard: React.FC = () => {
     setAnimate(true);
   }, []);
 
-  const dashboardCards: DashboardCard[] = [
+  const dashboardCards = [
     {
       id: 'production',
       title: 'Production Efficiency',
@@ -319,6 +311,17 @@ const Dashboard: React.FC = () => {
         </Slide>
       </Container>
     </Box>
+  );
+};
+
+const Dashboard: React.FC = () => {
+  return (
+    <Routes>
+      <Route path="/" element={<MainDashboard />} />
+      <Route path="/production" element={<ProductionDashboard />} />
+      <Route path="/production/stages" element={<ProductionStages />} />
+      <Route path="*" element={<Navigate to="/dashboard" replace />} />
+    </Routes>
   );
 };
 
