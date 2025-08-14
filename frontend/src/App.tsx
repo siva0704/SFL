@@ -10,6 +10,8 @@ import LandingPage from './pages/LandingPage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import Dashboard from './pages/Dashboard';
+import ProductManagement from './pages/products/ProductManagement';
+import TaskManagement from './pages/tasks/TaskManagement';
 import NotFound from './pages/NotFound';
 
 // Components
@@ -108,6 +110,29 @@ function App() {
                   <ProtectedRoute>
                     <Layout>
                       <Dashboard />
+                    </Layout>
+                  </ProtectedRoute>
+                }
+              />
+              
+              {/* Production Module Routes */}
+              <Route
+                path="/products"
+                element={
+                  <ProtectedRoute>
+                    <Layout>
+                      <ProductManagement />
+                    </Layout>
+                  </ProtectedRoute>
+                }
+              />
+              
+              <Route
+                path="/tasks"
+                element={
+                  <ProtectedRoute>
+                    <Layout>
+                      <TaskManagement />
                     </Layout>
                   </ProtectedRoute>
                 }

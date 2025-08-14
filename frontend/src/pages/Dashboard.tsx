@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
 import {
   Box,
   Typography,
@@ -35,8 +34,6 @@ import {
   Error,
 } from '@mui/icons-material';
 import { useAppSelector } from '../hooks/redux';
-import ProductionDashboard from './production/ProductionDashboard';
-import ProductionStages from './production/ProductionStages';
 
 const MainDashboard: React.FC = () => {
   const { user } = useAppSelector((state) => state.auth);
@@ -315,14 +312,7 @@ const MainDashboard: React.FC = () => {
 };
 
 const Dashboard: React.FC = () => {
-  return (
-    <Routes>
-      <Route path="/" element={<MainDashboard />} />
-      <Route path="/production" element={<ProductionDashboard />} />
-      <Route path="/production/stages" element={<ProductionStages />} />
-      <Route path="*" element={<Navigate to="/dashboard" replace />} />
-    </Routes>
-  );
+  return <MainDashboard />;
 };
 
 export default Dashboard; 

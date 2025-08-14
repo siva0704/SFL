@@ -3,7 +3,7 @@ import { logger } from './logger';
 
 const MONGODB_URI = process.env['NODE_ENV'] === 'test'
   ? process.env['MONGODB_URI_TEST']
-  : process.env['MONGODB_URI'];
+  : process.env['MONGODB_URI'] || 'mongodb://localhost:27017/fms';
 
 if (!MONGODB_URI) {
   throw new Error('MONGODB_URI is not defined in environment variables');
@@ -13,10 +13,11 @@ export const connectDB = async (): Promise<void> => {
   try {
     const conn = await mongoose.connect(MONGODB_URI, {
       maxPoolSize: 10,
-      serverSelectionTimeoutMS: 5000,
+      serverSelectionTimeoutMS: 30000,
       socketTimeoutMS: 45000,
       bufferCommands: false,
-      // bufferMaxEntries: 0 // Removed as it's not supported in newer Mongoose versions
+      retryWrites: true,
+      w: 'majority'
     });
 
     logger.info(`📦 MongoDB Connected: ${conn.connection.host}`);

@@ -1,165 +1,110 @@
 import api from './api';
+import type { Product, Task } from '../types';
 
-export interface ProductionStageData {
-  name: string;
-  description?: string;
-  order: number;
-  estimatedDuration: number;
-  targetQuantity: number;
-  assignedTo?: string[];
-  supervisor?: string;
-  inputMaterials?: Array<{
-    materialId: string;
-    quantity: number;
-    unit: string;
-  }>;
-  outputMaterials?: Array<{
-    materialId: string;
-    quantity: number;
-    unit: string;
-  }>;
-  predecessors?: string[];
-  successors?: string[];
-  notes?: string;
-}
+// Product API calls
+export const productService = {
+  // Get all products
+  getProducts: async (params?: Record<string, string | number>) => {
+    const response = await api.get('/products', { params });
+    return response.data;
+  },
 
-export interface WorkOrderData {
-  productName: string;
-  description?: string;
-  priority: 'low' | 'medium' | 'high' | 'urgent';
-  targetQuantity: number;
-  startDate: string;
-  dueDate: string;
-  stages: Array<{
-    stageId: string;
-    order: number;
-    assignedTo?: string[];
-  }>;
-  assignedTo?: string[];
-  supervisor?: string;
-  notes?: string;
-}
+  // Get product by ID
+  getProductById: async (id: string) => {
+    const response = await api.get(`/products/${id}`);
+    return response.data;
+  },
 
-export interface ProgressUpdateData {
-  completedQuantity: number;
-  notes?: string;
-}
+  // Create product
+  createProduct: async (productData: Partial<Product>) => {
+    const response = await api.post('/products', productData);
+    return response.data;
+  },
 
-export interface ProductionFilters {
-  page?: number;
-  limit?: number;
-  status?: string;
-  assignedTo?: string;
-  priority?: string;
-}
+  // Update product
+  updateProduct: async (id: string, productData: Partial<Product>) => {
+    const response = await api.put(`/products/${id}`, productData);
+    return response.data;
+  },
 
-class ProductionService {
-  // Dashboard
-  async getDashboardData() {
-    return api.get('/production/dashboard');
+  // Delete product
+  deleteProduct: async (id: string) => {
+    const response = await api.delete(`/products/${id}`);
+    return response.data;
+  },
+
+  // Get product categories
+  getProductCategories: async () => {
+    const response = await api.get('/products/categories');
+    return response.data;
+  },
+
+  // Get product statistics
+  getProductStats: async () => {
+    const response = await api.get('/products/stats');
+    return response.data;
   }
+};
 
-  // Production Stages
-  async getProductionStages(filters: ProductionFilters = {}) {
-    const params = new URLSearchParams();
-    Object.entries(filters).forEach(([key, value]) => {
-      if (value !== undefined && value !== '') {
-        params.append(key, value.toString());
-      }
-    });
-    
-    return api.get(`/production/stages?${params.toString()}`);
+// Task API calls
+export const taskService = {
+  // Get all tasks
+  getTasks: async (params?: Record<string, string | number>) => {
+    const response = await api.get('/tasks', { params });
+    return response.data;
+  },
+
+  // Get task by ID
+  getTaskById: async (id: string) => {
+    const response = await api.get(`/tasks/${id}`);
+    return response.data;
+  },
+
+  // Create task
+  createTask: async (taskData: Partial<Task>) => {
+    const response = await api.post('/tasks', taskData);
+    return response.data;
+  },
+
+  // Update task progress
+  updateTaskProgress: async (id: string, progressData: { completedQuantity: number; notes?: string }) => {
+    const response = await api.put(`/tasks/${id}/progress`, progressData);
+    return response.data;
+  },
+
+  // Complete quality check
+  completeQualityCheck: async (id: string, checkData: { checkName: string; notes?: string }) => {
+    const response = await api.put(`/tasks/${id}/quality-check`, checkData);
+    return response.data;
+  },
+
+  // Update task
+  updateTask: async (id: string, taskData: Partial<Task>) => {
+    const response = await api.put(`/tasks/${id}`, taskData);
+    return response.data;
+  },
+
+  // Get task statistics
+  getTaskStats: async () => {
+    const response = await api.get('/tasks/stats');
+    return response.data;
   }
+};
 
-  async getProductionStageById(id: string) {
-    return api.get(`/production/stages/${id}`);
+// Work Order API calls (for task creation)
+export const workOrderService = {
+  // Get all work orders
+  getWorkOrders: async (params?: Record<string, string | number>) => {
+    const response = await api.get('/production/work-orders', { params });
+    return response.data;
   }
+};
 
-  async createProductionStage(data: ProductionStageData) {
-    return api.post('/production/stages', data);
+// User API calls (for task assignment)
+export const userService = {
+  // Get users by role
+  getUsersByRole: async (role: string) => {
+    const response = await api.get('/users', { params: { role } });
+    return response.data;
   }
-
-  async updateProductionStage(id: string, data: Partial<ProductionStageData>) {
-    return api.put(`/production/stages/${id}`, data);
-  }
-
-  async updateStageProgress(id: string, data: ProgressUpdateData) {
-    return api.put(`/production/stages/${id}/progress`, data);
-  }
-
-  async deleteProductionStage(id: string) {
-    return api.delete(`/production/stages/${id}`);
-  }
-
-  // Work Orders
-  async getWorkOrders(filters: ProductionFilters = {}) {
-    const params = new URLSearchParams();
-    Object.entries(filters).forEach(([key, value]) => {
-      if (value !== undefined && value !== '') {
-        params.append(key, value.toString());
-      }
-    });
-    
-    return api.get(`/production/work-orders?${params.toString()}`);
-  }
-
-  async getWorkOrderById(id: string) {
-    return api.get(`/production/work-orders/${id}`);
-  }
-
-  async createWorkOrder(data: WorkOrderData) {
-    return api.post('/production/work-orders', data);
-  }
-
-  async updateWorkOrder(id: string, data: Partial<WorkOrderData>) {
-    return api.put(`/production/work-orders/${id}`, data);
-  }
-
-  async deleteWorkOrder(id: string) {
-    return api.delete(`/production/work-orders/${id}`);
-  }
-
-  // Analytics
-  async getProductionAnalytics(dateRange?: { startDate: string; endDate: string }) {
-    const params = dateRange ? new URLSearchParams(dateRange) : '';
-    return api.get(`/production/analytics?${params.toString()}`);
-  }
-
-  async getStagePerformance(stageId: string, dateRange?: { startDate: string; endDate: string }) {
-    const params = dateRange ? new URLSearchParams(dateRange) : '';
-    return api.get(`/production/stages/${stageId}/performance?${params.toString()}`);
-  }
-
-  // Real-time updates
-  async getStageUpdates(stageId: string) {
-    return api.get(`/production/stages/${stageId}/updates`);
-  }
-
-  // Bulk operations
-  async bulkUpdateStages(updates: Array<{ id: string; data: Partial<ProductionStageData> }>) {
-    return api.put('/production/stages/bulk', { updates });
-  }
-
-  async bulkUpdateProgress(updates: Array<{ id: string; completedQuantity: number; notes?: string }>) {
-    return api.put('/production/stages/bulk-progress', { updates });
-  }
-
-  // Export/Import
-  async exportStages(format: 'csv' | 'excel' = 'csv') {
-    return api.get(`/production/stages/export?format=${format}`, {
-      responseType: 'blob'
-    });
-  }
-
-  async importStages(file: File) {
-    const formData = new FormData();
-    formData.append('file', file);
-    return api.post('/production/stages/import', formData, {
-      headers: {
-        'Content-Type': 'multipart/form-data'
-      }
-    });
-  }
-}
-
-export const productionService = new ProductionService();
+};

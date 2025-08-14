@@ -58,7 +58,8 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 
   const menuItems = [
     { text: 'Dashboard', icon: <Dashboard />, path: '/dashboard' },
-    { text: 'Production', icon: <TrendingUp />, path: '/dashboard/production' },
+    { text: 'Products', icon: <Inventory />, path: '/products' },
+    { text: 'Tasks', icon: <Engineering />, path: '/tasks' },
     { text: 'Inventory', icon: <Inventory />, path: '/dashboard/inventory' },
     { text: 'Maintenance', icon: <Engineering />, path: '/dashboard/maintenance' },
     { text: 'Quality', icon: <Assessment />, path: '/dashboard/quality' },

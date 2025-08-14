@@ -183,6 +183,78 @@ export interface IProductionStage {
   wipQuantity: number;
 }
 
+// Product Interface
+export interface IProduct {
+  _id: string;
+  companyId: string;
+  name: string;
+  description?: string;
+  sku: string;
+  category: string;
+  specifications: Record<string, any>;
+  processStages: Array<{
+    stageId: string;
+    order: number;
+    name: string;
+    description?: string;
+    estimatedDuration: number;
+    requiredSkills: string[];
+    qualityChecks: Array<{
+      name: string;
+      description: string;
+      required: boolean;
+    }>;
+  }>;
+  status: 'active' | 'inactive' | 'discontinued';
+  createdBy: string;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+// Task Interface
+export interface ITask {
+  _id: string;
+  companyId: string;
+  workOrderId: string;
+  productId: string;
+  stageId: string;
+  taskNumber: string;
+  name: string;
+  description?: string;
+  assignedTo: string;
+  assignedBy: string;
+  supervisor: string;
+  status: 'pending' | 'in_progress' | 'completed' | 'paused' | 'cancelled';
+  priority: 'low' | 'medium' | 'high' | 'urgent';
+  targetQuantity: number;
+  completedQuantity: number;
+  startDate?: Date;
+  dueDate: Date;
+  actualEndDate?: Date;
+  estimatedDuration: number;
+  actualDuration?: number;
+  qualityChecks: Array<{
+    name: string;
+    description: string;
+    required: boolean;
+    completed: boolean;
+    completedBy?: string;
+    completedAt?: Date;
+    notes?: string;
+  }>;
+  notes: string;
+  attachments: Array<{
+    filename: string;
+    originalName: string;
+    mimeType: string;
+    size: number;
+    uploadedBy: string;
+    uploadedAt: Date;
+  }>;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
 // Inventory Item Interface
 export interface IInventoryItem {
   _id: string;
