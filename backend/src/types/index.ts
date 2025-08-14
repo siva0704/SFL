@@ -174,6 +174,13 @@ export interface IProductionStage {
   notes?: string;
   createdAt: Date;
   updatedAt: Date;
+  // DAG structure
+  predecessors: string[];
+  successors: string[];
+  // Progress tracking
+  targetQuantity: number;
+  completedQuantity: number;
+  wipQuantity: number;
 }
 
 // Inventory Item Interface
@@ -369,4 +376,4 @@ export interface INotification {
   metadata?: any;
   createdAt: Date;
   updatedAt: Date;
-} 
+}
